@@ -1,0 +1,315 @@
+/* ===== 기본 세팅 ===== */
+:root {
+  --bg: #ffffff;
+  --black: #111;
+  --accent: #2b8a3e;
+  --danger: #ff3b30;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--black);
+  background: var(--bg);
+}
+
+.screen {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ===== 화면 1 : 상단 하늘 ===== */
+
+.screen-top {
+  background: #ffffff;
+}
+
+.top-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sun-img {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  width: 140px;
+  opacity: 0.8;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 48px;
+  margin-top: 40px;
+  margin-bottom: 8px;
+}
+
+.sub-title {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.trash-area {
+  position: relative;
+  height: 480px;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  margin-top: 40px;
+  overflow: hidden;
+}
+
+/* 공통 쓰레기 스타일 */
+.trash {
+  position: absolute;
+  width: 80px;
+  cursor: pointer;
+  transition: transform 0.4s ease, opacity 0.4s ease, top 1s ease-out;
+}
+
+/* hover 시 도망가는 느낌 */
+.trash:hover {
+  transform: translateY(-25px) translateX(18px) rotate(3deg);
+}
+
+/* fall 클래스: 아래로 낙하 */
+.trash.fall {
+  pointer-events: none;
+  top: 120%;
+  opacity: 0;
+}
+
+/* 각각 대략 위치 (그림판 감성이라 러프하게 배치해도 괜찮음) */
+.trash-bottle {
+  top: 60px;
+  left: 12%;
+}
+.trash-can {
+  top: 120px;
+  left: 30%;
+}
+.trash-apple {
+  top: 40px;
+  left: 50%;
+}
+.trash-pet {
+  top: 90px;
+  left: 70%;
+}
+.trash-a4 {
+  top: 200px;
+  left: 18%;
+}
+.trash-biga4 {
+  top: 230px;
+  left: 45%;
+}
+.trash-round {
+  top: 150px;
+  left: 80%;
+}
+.trash-egg {
+  top: 280px;
+  left: 10%;
+}
+.trash-fishbone {
+  top: 300px;
+  left: 55%;
+}
+.trash-tuna {
+  top: 260px;
+  left: 75%;
+}
+
+/* GAME OVER 메시지 */
+.game-message {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--danger);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 2px solid var(--danger);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.game-message span {
+  display: block;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ===== 화면 2 : 바다 ===== */
+
+.screen-ocean {
+  background: #e0f5ff;
+  padding: 40px 0 80px;
+}
+
+.ocean-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sea-surface {
+  height: 40px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #000,
+    #000 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  opacity: 0.15;
+  margin-bottom: 8px;
+}
+
+.ocean-layer {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 2px solid #000;
+  background: #b8e6ff;
+}
+
+/* 바다 배경 */
+.sea-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+/* 바다 속 동물 */
+.ocean-obj {
+  position: absolute;
+  width: 140px;
+  z-index: 2;
+}
+
+.ocean-obj.fish {
+  left: 12%;
+  bottom: 40px;
+}
+
+.ocean-obj.turtle {
+  right: 8%;
+  bottom: 30px;
+}
+
+/* 바다 쓰레기 공통 */
+.ocean-trash {
+  position: absolute;
+  width: 80px;
+  opacity: 0.15; /* 처음엔 희미하게 */
+  z-index: 3;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* 바다에서 천천히 떠다니는 모션 */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-10px) translateX(10px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* 각각 대략 위치 */
+.t-bottle {
+  left: 18%;
+  bottom: 120px;
+}
+.t-can {
+  left: 40%;
+  bottom: 80px;
+}
+.t-apple {
+  left: 63%;
+  bottom: 150px;
+}
+.t-pet {
+  right: 18%;
+  bottom: 200px;
+}
+.t-a4 {
+  left: 5%;
+  bottom: 200px;
+}
+.t-biga4 {
+  left: 48%;
+  bottom: 200px;
+}
+.t-roundpaper {
+  right: 8%;
+  bottom: 110px;
+}
+.t-egg {
+  left: 30%;
+  bottom: 35px;
+}
+.t-fishbone {
+  right: 32%;
+  bottom: 55px;
+}
+.t-tuna {
+  left: 70%;
+  bottom: 40px;
+}
+
+/* 쓰레기가 실제로 떨어진 뒤에는 더 진하게 보이게 */
+.ocean-trash.active {
+  opacity: 0.9;
+}
+
+/* 바다 텍스트 */
+.ocean-text {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.ocean-main {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.ocean-sub {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* 반응형 조금만 */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 32px;
+  }
+  .trash {
+    width: 60px;
+  }
+  .ocean-obj {
+    width: 110px;
+  }
+  .ocean-trash {
+    width: 60px;
+  }
+}

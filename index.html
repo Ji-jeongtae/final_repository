@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style/reset.css" />
+
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+
+  <body>
+    <!-- ===== 화면 1 : 하늘 + 도망가는 쓰레기 ===== -->
+    <section class="screen screen-top">
+      <div class="top-inner">
+        <img src="asset/sun.png" alt="sun" class="sun-img" />
+
+        <h1 class="main-title">Recycling Project</h1>
+        <p class="sub-title">클릭해서 쓰레기를 없애 보세요.<br /></p>
+
+        <div class="trash-area" id="trashArea">
+          <!-- 위에서 떠다니는 쓰레기들 -->
+          <img
+            src="asset/bottle.png"
+            alt="bottle"
+            class="trash trash-bottle"
+            data-type="bottle"
+          />
+          <img
+            src="asset/can.png"
+            alt="can"
+            class="trash trash-can"
+            data-type="can"
+          />
+          <img
+            src="asset/Apple.png"
+            alt="apple"
+            class="trash trash-apple"
+            data-type="Apple"
+          />
+          <img
+            src="asset/pet.png"
+            alt="pet cup"
+            class="trash trash-pet"
+            data-type="pet"
+          />
+          <img
+            src="asset/a4.png"
+            alt="paper"
+            class="trash trash-a4"
+            data-type="a4"
+          />
+          <img
+            src="asset/biga4.png"
+            alt="big paper"
+            class="trash trash-biga4"
+            data-type="biga4"
+          />
+          <img
+            src="asset/roundpaper.png"
+            alt="round paper"
+            class="trash trash-round"
+            data-type="roundpaper"
+          />
+          <img
+            src="asset/Egg.png"
+            alt="egg shell"
+            class="trash trash-egg"
+            data-type="Egg"
+          />
+          <img
+            src="asset/Fishbone.png"
+            alt="fish bone"
+            class="trash trash-fishbone"
+            data-type="Fishbone"
+          />
+          <img
+            src="asset/tuna.png"
+            alt="tuna can"
+            class="trash trash-tuna"
+            data-type="tuna"
+          />
+        </div>
+
+        <div class="game-message" id="gameMessage">
+          GAME OVER<br />
+          <span>스크롤을 아래로 내려 보세요.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 화면 2 : 바다 속 ===== -->
+    <section class="screen screen-ocean">
+      <div class="ocean-inner">
+        <div class="sea-surface"></div>
+
+        <div class="ocean-layer">
+          <!-- 바다 배경용 이미지 -->
+          <img src="asset/sea.png" alt="sea" class="sea-bg" />
+
+          <!-- 바다 속 생명들 -->
+          <img src="asset/Fish.png" alt="fish" class="ocean-obj fish" />
+          <img src="asset/Turtle.png" alt="turtle" class="ocean-obj turtle" />
+
+          <!-- 바다에 쌓인 쓰레기들 (처음엔 반투명) -->
+          <img
+            src="asset/bottle.png"
+            alt="bottle trash"
+            class="ocean-trash t-bottle"
+            data-type="bottle"
+          />
+          <img
+            src="asset/can.png"
+            alt="can trash"
+            class="ocean-trash t-can"
+            data-type="can"
+          />
+          <img
+            src="asset/Apple.png"
+            alt="apple trash"
+            class="ocean-trash t-apple"
+            data-type="Apple"
+          />
+          <img
+            src="asset/pet.png"
+            alt="pet trash"
+            class="ocean-trash t-pet"
+            data-type="pet"
+          />
+          <img
+            src="asset/a4.png"
+            alt="paper trash"
+            class="ocean-trash t-a4"
+            data-type="a4"
+          />
+          <img
+            src="asset/biga4.png"
+            alt="big paper trash"
+            class="ocean-trash t-biga4"
+            data-type="biga4"
+          />
+          <img
+            src="asset/roundpaper.png"
+            alt="round paper trash"
+            class="ocean-trash t-roundpaper"
+            data-type="roundpaper"
+          />
+          <img
+            src="asset/Egg.png"
+            alt="egg trash"
+            class="ocean-trash t-egg"
+            data-type="Egg"
+          />
+          <img
+            src="asset/Fishbone.png"
+            alt="fishbone trash"
+            class="ocean-trash t-fishbone"
+            data-type="Fishbone"
+          />
+          <img
+            src="asset/tuna.png"
+            alt="tuna trash"
+            class="ocean-trash t-tuna"
+            data-type="tuna"
+          />
+        </div>
+
+        <div class="ocean-text">
+          <p class="ocean-main">
+            위에서 없앤 줄 알았던 쓰레기들은<br />
+            어디로 갔을까요?
+          </p>
+          <p class="ocean-sub">
+            스크롤 밖으로 떨어졌던 쓰레기들은<br />
+            결국 바다에 쌓여 해양 생물을 괴롭히게 됩니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 인터랙션 스크립트 -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
