@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <title>Recycling – Responsive Poster</title>
     <link rel="stylesheet" href="style/reset.css" />
-
     <link rel="stylesheet" href="style/style.css" />
   </head>
 
@@ -14,9 +13,6 @@
     <section class="screen screen-top">
       <div class="top-inner">
         <img src="asset/sun.png" alt="sun" class="sun-img" />
-
-        <h1 class="main-title">Recycling Project</h1>
-        <p class="sub-title">클릭해서 쓰레기를 없애 보세요.<br /></p>
 
         <div class="trash-area" id="trashArea">
           <!-- 위에서 떠다니는 쓰레기들 -->
@@ -83,7 +79,7 @@
         </div>
 
         <div class="game-message" id="gameMessage">
-          GAME OVER<br />
+          GAME&nbsp;OVER
           <span>스크롤을 아래로 내려 보세요.</span>
         </div>
       </div>
@@ -92,17 +88,15 @@
     <!-- ===== 화면 2 : 바다 속 ===== -->
     <section class="screen screen-ocean">
       <div class="ocean-inner">
-        <div class="sea-surface"></div>
+        <!-- 파도 라인(이미지가 아니라 CSS로 표현) -->
+        <div class="wave-line"></div>
 
         <div class="ocean-layer">
-          <!-- 바다 배경용 이미지 -->
-          <img src="asset/sea.png" alt="sea" class="sea-bg" />
-
-          <!-- 바다 속 생명들 -->
+          <!-- 바다 속 생명들 (게임오버 이후 등장) -->
           <img src="asset/Fish.png" alt="fish" class="ocean-obj fish" />
           <img src="asset/Turtle.png" alt="turtle" class="ocean-obj turtle" />
 
-          <!-- 바다에 쌓인 쓰레기들 (처음엔 반투명) -->
+          <!-- 바다에 쌓인 쓰레기들 (게임오버 이후 등장) -->
           <img
             src="asset/bottle.png"
             alt="bottle trash"
@@ -163,17 +157,6 @@
             class="ocean-trash t-tuna"
             data-type="tuna"
           />
-        </div>
-
-        <div class="ocean-text">
-          <p class="ocean-main">
-            위에서 없앤 줄 알았던 쓰레기들은<br />
-            어디로 갔을까요?
-          </p>
-          <p class="ocean-sub">
-            스크롤 밖으로 떨어졌던 쓰레기들은<br />
-            결국 바다에 쌓여 해양 생물을 괴롭히게 됩니다.
-          </p>
         </div>
       </div>
     </section>
