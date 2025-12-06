@@ -1,45 +1,70 @@
-// Recycling 인터랙션 스크립트
-
 document.addEventListener("DOMContentLoaded", () => {
-  const trashEls = Array.from(document.querySelectorAll(".trash"));
-  const gameMsg = document.getElementById("gameMessage");
-  const oceanTrashEls = Array.from(document.querySelectorAll(".ocean-trash"));
+  const trashList = document.querySelectorAll(".trash");
+  const gameMessage = document.getElementById("gameMessage");
+  const oceanTrash = document.querySelectorAll(".ocean-trash");
+  const oceanInner = document.querySelector(".ocean-inner");
 
-  let removedCount = 0;
-  const totalCount = trashEls.length;
+  const totalTrash = trashList.length;
+  let fallCount = 0;
 
-  // 쓰레기 클릭 → 아래로 떨어지기 + 바다에 나타나기
-  trashEls.forEach((el) => {
-    el.addEventListener("click", () => {
-      if (el.classList.contains("fall")) return; // 이미 떨어진 애는 무시
+  // 상단 쓰레기 둥둥 모션의 시작 타이밍을 조금씩 랜덤으로 다르게
+  trashList.forEach((item) => {
+    const delay = Math.random() * 3; // 0~3초
+    item.style.animationDelay = `${delay}s`;
+  });
 
-      el.classList.add("fall");
-      removedCount += 1;
+  // 쓰레기 hover → 더 빠르게 도망
+  trashList.forEach((item) => {
+    // 마우스 올렸을 때 도망
+    item.addEventListener("mouseenter", () => {
+      if (item.classList.contains("fall")) return; // 이미 떨어진 애는 무시
 
-      // 같은 data-type 가진 바다 쓰레기 진하게 표시
-      const type = el.dataset.type;
-      oceanTrashEls
-        .filter((t) => t.dataset.type === type)
-        .forEach((t) => t.classList.add("active"));
+      const dx = (Math.random() * 240 - 120).toFixed(0); // -120 ~ 120px
+      const dy = (Math.random() * 140 - 70).toFixed(0); // -70 ~ 70px
+      const rotate = (Math.random() * 50 - 25).toFixed(0);
 
-      // 모든 쓰레기를 떨어뜨렸으면 GAME OVER 메시지 표시
-      if (removedCount >= totalCount) {
-        gameMsg.style.opacity = "1";
+      // CSS animation 위에 덮어쓰기
+      item.style.transform = `translate(${dx}px, ${dy}px) rotate(${rotate}deg)`;
+    });
+
+    // 마우스가 나가면 다시 둥둥 상태로 복귀
+    item.addEventListener("mouseleave", () => {
+      if (item.classList.contains("fall")) return;
+      item.style.transform = "";
+    });
+
+    // 클릭 → 아래로 떨어지기
+    item.addEventListener("click", () => {
+      if (item.classList.contains("fall")) return;
+
+      item.classList.add("fall");
+      fallCount += 1;
+
+      // 전부 떨어뜨렸을 때
+      if (fallCount === totalTrash) {
+        showGameOver();
+        revealOceanScene(); // 파도 + 물고기 + 거북이
+        revealOceanTrash(); // 바다 쓰레기
       }
     });
-
-    // hover 들어갈 때마다 약간 위치 랜덤 변경해서 '도망가는' 느낌 추가
-    el.addEventListener("mouseenter", () => {
-      if (el.classList.contains("fall")) return;
-      const deltaX = (Math.random() - 0.5) * 60; // -30 ~ 30
-      const deltaY = -20 - Math.random() * 20; // -20 ~ -40
-      el.style.transform = `translate(${deltaX}px, ${deltaY}px) rotate(3deg)`;
-    });
-
-    // 마우스가 떠나면 transform 다시 초기화(transition으로 자연스럽게 원위치)
-    el.addEventListener("mouseleave", () => {
-      if (el.classList.contains("fall")) return;
-      el.style.transform = "translate(0, 0)";
-    });
   });
+
+  // GAME OVER 연출
+  function showGameOver() {
+    if (!gameMessage) return;
+    gameMessage.classList.add("show");
+  }
+
+  // 바다 전체(파도, 물고기, 거북이) 등장
+  function revealOceanScene() {
+    if (!oceanInner) return;
+    oceanInner.classList.add("ocean-visible");
+  }
+
+  // 바다 속 쓰레기 등장
+  function revealOceanTrash() {
+    oceanTrash.forEach((t) => {
+      t.classList.add("appear");
+    });
+  }
 });
