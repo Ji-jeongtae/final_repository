@@ -41,7 +41,7 @@ body {
 /* 해 */
 .sun-img {
   position: absolute;
-  top: -40px;
+  top: 0px;
   left: -40px;
   width: 260px;
   height: auto;
@@ -57,10 +57,9 @@ body {
 /* 떠다니는 쓰레기 공통 */
 .trash {
   position: absolute;
-  width: 120px; /* 상단 전체를 더 채우도록 크게 */
+  width: 120px;
   cursor: pointer;
   transition: transform 0.12s ease-out, opacity 0.3s ease-out;
-  /* 기본 둥둥 모션 */
   animation-name: floatTop;
   animation-duration: 6s;
   animation-iteration-count: infinite;
@@ -110,7 +109,7 @@ body {
   top: 43%;
 }
 
-/* 상단 둥둥 모션 (조금 더 크게) */
+/* 상단 둥둥 모션 */
 @keyframes floatTop {
   0% {
     transform: translate(0, 0);
@@ -123,73 +122,81 @@ body {
 /* 클릭 후 아래로 떨어지는 애니메이션 */
 .trash.fall {
   pointer-events: none;
-  animation-name: fallDown;
-  animation-duration: 1.1s;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
+  animation: fallDown 1.2s ease-in forwards !important;
 }
 
 @keyframes fallDown {
-  to {
-    transform: translateY(120vh) rotate(25deg);
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(150vh) rotate(360deg);
     opacity: 0;
   }
 }
 
-/* GAME OVER 메시지 */
+/* GAME OVER 메시지 영역 */
 .game-message {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  padding: 18px 32px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.85);
-  color: #fff;
-  text-align: center;
-  font-weight: 800;
-  font-size: 28px;
-  letter-spacing: 0.3em;
-  text-indent: 0.3em;
-  box-shadow: 0 0 0 rgba(0, 255, 255, 0.7);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.game-message span {
-  display: block;
-  margin-top: 12px;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-indent: 0.08em;
-  opacity: 0.85;
+  transition: opacity 0.6s ease;
+  z-index: 100;
 }
 
 .game-message.show {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  animation: gameGlow 1.4s ease-in-out infinite;
 }
 
-@keyframes gameGlow {
+/* GAME OVER 이미지 */
+.gameover-img {
+  width: 400px;
+  height: auto;
+  animation: fadeInScale 0.6s ease forwards;
+}
+
+@keyframes fadeInScale {
   0% {
-    box-shadow: 0 0 0 rgba(0, 255, 255, 0.6);
-  }
-  50% {
-    box-shadow: 0 0 24px rgba(0, 255, 255, 0.9);
+    transform: scale(0.8);
+    opacity: 0;
   }
   100% {
-    box-shadow: 0 0 0 rgba(0, 255, 255, 0.6);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 화살표 이미지 - 깜빡임 */
+.arrow-img {
+  width: 60px;
+  height: auto;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
   }
 }
 
 /* =========================
-   2. 하단 : 바다 화면 (sea.png 없이)
+   2. 하단 : 바다 화면
    ========================= */
 .screen-ocean {
   position: relative;
-  min-height: 60vh; /* 너무 길지 않게 */
+  min-height: 60vh;
   background: var(--ocean-bg);
   display: flex;
   justify-content: center;
@@ -203,7 +210,28 @@ body {
   margin: 0 auto;
 }
 
-/* 파도 라인 – CSS로 그리기, 게임오버 이후 등장 */
+/* It's Not Over 메시지 */
+.not-over-message {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  opacity: 0;
+  transition: all 0.6s ease;
+  z-index: 100;
+}
+
+.not-over-message img {
+  width: 450px;
+  height: auto;
+}
+
+.not-over-message.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* 파도 라인 */
 .wave-line {
   position: relative;
   width: 100%;
@@ -229,15 +257,15 @@ body {
   background-size: 32px 32px;
 }
 
-/* 바다 내용 영역 (파도 아래 공간) */
+/* 바다 내용 영역 */
 .ocean-layer {
   position: relative;
   margin-top: 10px;
   width: 100%;
-  height: 260px; /* 바다 높이 (짧게) */
+  height: 260px;
 }
 
-/* 물고기, 거북이 – 처음엔 숨김 */
+/* 물고기, 거북이 */
 .ocean-obj {
   position: absolute;
   width: 150px;
@@ -255,7 +283,7 @@ body {
   top: 45%;
 }
 
-/* 바다 속 쓰레기 – 처음엔 숨김 */
+/* 바다 속 쓰레기 */
 .ocean-trash {
   position: absolute;
   width: 110px;
@@ -264,7 +292,7 @@ body {
   pointer-events: none;
 }
 
-/* GAME OVER 이후(바다 등장) */
+/* 바다 등장 */
 .ocean-visible .wave-line {
   opacity: 1;
   transform: translateY(0);
@@ -280,17 +308,17 @@ body {
   animation: float 4s ease-in-out infinite alternate;
 }
 
-/* 하단 쓰레기 넓게 분배 */
+/* 하단 쓰레기 위치 */
 .t-bottle {
   left: 4%;
-  top: 55%;
+  top: 200%;
 }
 .t-can {
   left: 15%;
-  top: 65%;
+  top: 20%;
 }
 .t-apple {
-  left: 28%;
+  left: 0%;
   top: 60%;
 }
 .t-pet {
@@ -299,30 +327,30 @@ body {
 }
 .t-a4 {
   left: 40%;
-  top: 50%;
+  top: 200%;
 }
 .t-biga4 {
   left: 55%;
   top: 68%;
 }
 .t-roundpaper {
-  right: 18%;
+  right: -40%;
   top: 72%;
 }
 .t-egg {
-  right: 30%;
+  right: 70%;
   top: 55%;
 }
 .t-fishbone {
-  left: 67%;
-  top: 52%;
+  left: 50%;
+  top: 30%;
 }
 .t-tuna {
-  left: 82%;
+  left: 100%;
   top: 62%;
 }
 
-/* 바다 안에서 미세하게 떠다니는 모션 */
+/* 바다 쓰레기 둥둥 모션 */
 @keyframes float {
   0% {
     transform: translate(0, 0);
@@ -332,7 +360,7 @@ body {
   }
 }
 
-/* 반응형: 너무 작을 때 이미지 크기만 조금 줄임 */
+/* 반응형 */
 @media (max-width: 768px) {
   .trash {
     width: 80px;
@@ -346,8 +374,15 @@ body {
     width: 75px;
   }
 
-  .game-message {
-    font-size: 20px;
-    letter-spacing: 0.15em;
+  .gameover-img {
+    width: 280px;
+  }
+
+  .arrow-img {
+    width: 40px;
+  }
+
+  .not-over-message img {
+    width: 300px;
   }
 }

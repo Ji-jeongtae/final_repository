@@ -29,7 +29,7 @@
             data-type="can"
           />
           <img
-            src="asset/Apple.png"
+            src="asset/apple.png"
             alt="apple"
             class="trash trash-apple"
             data-type="Apple"
@@ -59,16 +59,16 @@
             data-type="roundpaper"
           />
           <img
-            src="asset/Egg.png"
+            src="asset/egg.png"
             alt="egg shell"
             class="trash trash-egg"
             data-type="Egg"
           />
           <img
-            src="asset/Fishbone.png"
+            src="asset/fishbone.png"
             alt="fish bone"
             class="trash trash-fishbone"
-            data-type="Fishbone"
+            data-type="fishbone"
           />
           <img
             src="asset/tuna.png"
@@ -78,9 +78,10 @@
           />
         </div>
 
+        <!-- GAME OVER 메시지 영역 -->
         <div class="game-message" id="gameMessage">
-          GAME&nbsp;OVER
-          <span>스크롤을 아래로 내려 보세요.</span>
+          <img src="asset/gameover.png" alt="game over" class="gameover-img" />
+          <img src="asset/arrow.png" alt="scroll down" class="arrow-img" />
         </div>
       </div>
     </section>
@@ -88,15 +89,15 @@
     <!-- ===== 화면 2 : 바다 속 ===== -->
     <section class="screen screen-ocean">
       <div class="ocean-inner">
-        <!-- 파도 라인(이미지가 아니라 CSS로 표현) -->
+        <!-- 파도 라인 -->
         <div class="wave-line"></div>
 
         <div class="ocean-layer">
-          <!-- 바다 속 생명들 (게임오버 이후 등장) -->
-          <img src="asset/Fish.png" alt="fish" class="ocean-obj fish" />
-          <img src="asset/Turtle.png" alt="turtle" class="ocean-obj turtle" />
+          <!-- 바다 속 생명들 -->
+          <img src="asset/fish.png" alt="fish" class="ocean-obj fish" />
+          <img src="asset/turtle.png" alt="turtle" class="ocean-obj turtle" />
 
-          <!-- 바다에 쌓인 쓰레기들 (게임오버 이후 등장) -->
+          <!-- 바다에 쌓인 쓰레기들 -->
           <img
             src="asset/bottle.png"
             alt="bottle trash"
@@ -110,7 +111,7 @@
             data-type="can"
           />
           <img
-            src="asset/Apple.png"
+            src="asset/apple.png"
             alt="apple trash"
             class="ocean-trash t-apple"
             data-type="Apple"
@@ -140,16 +141,22 @@
             data-type="roundpaper"
           />
           <img
-            src="asset/Egg.png"
+            src="asset/egg.png"
             alt="egg trash"
             class="ocean-trash t-egg"
             data-type="Egg"
           />
           <img
-            src="asset/Fishbone.png"
+            src="asset/fishbone.png"
             alt="fishbone trash"
             class="ocean-trash t-fishbone"
             data-type="Fishbone"
+          />
+          <img
+            src="asset/notvoer.png"
+            alt="not-voer"
+            class="not-over"
+            data-type="notover"
           />
           <img
             src="asset/tuna.png"
