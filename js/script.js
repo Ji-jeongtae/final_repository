@@ -61,7 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
       trash.style.animation = "none";
       trash.style.pointerEvents = "none";
       trash.style.transition = "none";
-      trash.classList.add("fall");
+
+      // 종이 쓰레기인지 확인
+      const isPaper =
+        trash.classList.contains("trash-a4") ||
+        trash.classList.contains("trash-biga4") ||
+        trash.classList.contains("trash-round");
+
+      if (isPaper) {
+        trash.classList.add("fall-paper");
+      } else {
+        trash.classList.add("fall");
+      }
 
       const onEnd = () => {
         trash.removeEventListener("animationend", onEnd);
