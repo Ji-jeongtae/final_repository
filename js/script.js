@@ -110,21 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 바다 섹션에 클래스 추가
     oceanSection.classList.add("ocean-visible");
 
-    // "It's Not Over" 메시지 생성 및 표시
-    const notOverMsg = document.createElement("div");
-    notOverMsg.className = "not-over-message";
-
-    const notOverImg = document.createElement("img");
-    notOverImg.src = "asset/notover.png";
-    notOverImg.alt = "It's Not Over";
-
-    notOverMsg.appendChild(notOverImg);
-    oceanSection.querySelector(".ocean-inner").prepend(notOverMsg);
-
-    setTimeout(() => {
-      notOverMsg.classList.add("show");
-    }, 100);
-
     // 바다 쓰레기들 순차적으로 등장
     oceanTrashes.forEach((trash, index) => {
       setTimeout(() => {

@@ -210,27 +210,6 @@ body {
   margin: 0 auto;
 }
 
-/* It's Not Over 메시지 */
-.not-over-message {
-  position: absolute;
-  top: -80px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.8);
-  opacity: 0;
-  transition: all 0.6s ease;
-  z-index: 100;
-}
-
-.not-over-message img {
-  width: 450px;
-  height: auto;
-}
-
-.not-over-message.show {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
 /* 파도 라인 */
 .wave-line {
   position: relative;
@@ -380,9 +359,5 @@ body {
 
   .arrow-img {
     width: 40px;
-  }
-
-  .not-over-message img {
-    width: 300px;
   }
 }
