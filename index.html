@@ -12,6 +12,13 @@
     <!-- ===== 화면 1 : 하늘 + 도망가는 쓰레기 ===== -->
     <section class="screen screen-top">
       <div class="top-inner">
+        <header class="project-header">
+          <h1>Recycling Project</h1>
+          <p class="project-date">2025.12.10 ~ 2026.12.10</p>
+          <p class="project-subtitle">
+            쓰레기를 클릭하면 떨어집니다! 어떻게 하시겠어요?
+          </p>
+        </header>
         <img src="asset/sun.png" alt="sun" class="sun-img" />
 
         <div class="trash-area" id="trashArea">
@@ -67,9 +74,17 @@
           <img
             src="asset/fishbone.png"
             alt="fish bone"
-            class="trash trash-fishbone"
+            class="trash trash-fishbone blink"
             data-type="fishbone"
+            id="fishboneImg"
           />
+          <span class="click-text-absolute" id="clickText">Click!</span>
+          <span
+            class="next-trash-message-absolute"
+            id="nextTrashMessage"
+            style="display: none"
+            >다음 쓰레기는요?</span
+          >
           <img
             src="asset/tuna.png"
             alt="tuna can"
@@ -88,9 +103,16 @@
 
     <!-- ===== 화면 2 : 바다 속 ===== -->
     <section class="screen screen-ocean">
-      <div class="ocean-inner">
-        <!-- 파도 라인 -->
+      <p class="final-message-line1" id="finalMessageLine1"></p>
+      <p class="final-message-line2" id="finalMessageLine2"></p>
+      <img
+        src="asset/koba.png"
+        alt="koba image"
+        class="koba-image"
+        id="kobaImage"
+      />
 
+      <div class="ocean-inner">
         <div class="ocean-layer">
           <!-- 바다 속 생명들 -->
           <img src="asset/fish.png" alt="fish" class="ocean-obj fish" />
