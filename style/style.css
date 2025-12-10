@@ -37,18 +37,20 @@ body {
 .project-header {
   font-size: 34px;
   position: absolute;
-  top: -45px;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   z-index: 20;
+  line-height: 0.4;
 }
 
 .project-subtitle {
   font-family: "YoonChoWooSan";
-  top: -20px;
+  top: -40px;
   font-size: 0.9em;
   font-weight: bold;
+  line-height: 2.4;
 }
 
 /* 게임오버 시 화면 어둡게 */
@@ -335,7 +337,7 @@ body {
   top: 200%;
 }
 .t-a4 {
-  left: 10%;
+  left: 20%;
   top: 290%;
 }
 .t-fishbone {
@@ -376,20 +378,19 @@ body {
   }
 }
 
-/* 2. "Click!" 텍스트 절대 위치 스타일 */
 .click-text-absolute {
   position: absolute;
-  /* fishbone (16%, 20%) 위치를 기준으로 오른쪽으로 이동 */
-  left: calc(16% + 80px + 10px); /* fishbone left + fishbone width + margin */
+
+  left: calc(16% + 80px + 10px);
   top: 20%;
-  transform: translateY(10px); /* fishbone 중앙에 맞추기 위해 조정 */
+  transform: translateY(10px);
   font-family: "YoonChoWooSan";
   font-size: 24px;
-  color: #00cc00; /* 초록색 */
+  color: #00cc00;
   font-weight: bold;
   white-space: nowrap;
   z-index: 10;
-  /* fishbone과 함께 둥둥 떠다니도록 애니메이션 적용 */
+
   animation-name: floatTop;
   animation-duration: 4s;
   animation-iteration-count: infinite;
@@ -397,16 +398,15 @@ body {
   animation-timing-function: ease-in-out;
 }
 
-/* 3. "다음 쓰레기는요?" 텍스트 절대 위치 스타일 */
 .next-trash-message-absolute {
   position: absolute;
-  /* fishbone의 중앙에 위치하도록 조정 */
+
   left: 16%;
   top: 20%;
   transform: translate(-50%, -50%);
   font-family: "YoonChoWooSan";
   font-size: 30px;
-  color: #00cc00; /* 초록색 */
+  color: #00cc00;
   font-weight: bold;
   white-space: nowrap;
   z-index: 15;
@@ -416,7 +416,6 @@ body {
   top: 0%;
 }
 
-/* 바다 쓰레기 둥둥 모션 */
 @keyframes float {
   0% {
     transform: translate(0, 0);
@@ -438,46 +437,37 @@ body {
     opacity: 0.3;
   }
 }
-/* style.css 파일 내 */
 
-/* 최종 메시지 공통 스타일 */
 .final-message-line1,
 .final-message-line2 {
-  position: absolute; /* 바다 섹션에 상대적으로 위치 */
+  position: absolute;
   left: 50%;
-  transform: translateX(-50%); /* 중앙 정렬 */
+  transform: translateX(-50%);
 
   font-family: "YoonChoWooSan";
-  font-size: 2em; /* 글자 크기 */
-  color: red; /* 빨간색 */
-  white-space: nowrap; /* 줄바꿈 방지 */
-  opacity: 0; /* 초기에는 숨김 */
-  z-index: 20; /* 다른 요소 위에 표시 */
+  font-size: 2em;
+  color: red;
+  white-space: nowrap;
+  opacity: 0;
+  z-index: 20;
 }
 
-/* 첫 번째 메시지 줄 위치 */
 .final-message-line1 {
   top: -5%;
 }
 
-/* 두 번째 메시지 줄 위치 */
 .final-message-line2 {
-  top: 46%; /* 첫 번째 줄 아래에 위치 */
+  top: 46%;
 }
 
-/* koba 이미지 스타일 */
 .koba-image {
   position: absolute;
   left: 50%;
-  top: 65%; /* 메시지 아래에 위치 */
+  top: 65%;
   transform: translateX(-50%);
-  max-width: 300px; /* 이미지 최대 너비 */
+  max-width: 300px;
   height: auto;
-  opacity: 0; /* 초기에는 숨김 */
-  transition: opacity 2s ease-in-out; /* 은은하게 나타나는 효과 */
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
   z-index: 20;
 }
-
-/* 한 글자씩 나타나는 애니메이션을 위한 클래스 */
-/* 이 부분은 JS에서 동적으로 style 속성으로 opacity를 제어할 것이므로, 
-   CSS 애니메이션 대신 JS에서 직접 setTimeout으로 제어합니다. */
